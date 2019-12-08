@@ -12,7 +12,6 @@ Dictionary={}
 
 # Function to sync with data on spreadsheet
 def getLatestData():
-    print("Getting the latest data from sheet...")
     tele_id_list = registered_user.col_values(1)
     matric_list = registered_user.col_values(2)
     name_list = registered_user.col_values(3)
@@ -30,7 +29,6 @@ def setData(telegram_id,index_dict,value):
         index_dict=3
     elif(index_dict=="counter_help"):
         index_dict=2
-    print("Set Change to Spreadsheet")
     row_dict = Dictionary[telegram_id][4] # 4 is the index in terms of row
     registered_user.update_cell(int(row_dict)+2, int(index_dict)+2, value) # +2 offset based on spreadsheet
 

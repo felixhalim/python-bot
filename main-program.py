@@ -80,7 +80,6 @@ def give(update, context):
 
 # Function to sync data from Google Spreadsheet
 def sync(update,context):
-    print("Syncing data...")
     update.message.reply_text('Sync Done')
     Local_reg_user.update(reg_user.getLatestData())
     global Local_req_bucket_matric, Local_req_bucket_username 
@@ -88,8 +87,6 @@ def sync(update,context):
     Local_req_bucket_username = req_bucket.getLatestUsername()
 
 def main():    
-    print("Running Bot")
-
     Local_reg_user.update(reg_user.getLatestData())
     global Local_req_bucket_matric, Local_req_bucket_username
     Local_req_bucket_matric = req_bucket.getLatestMatric()
