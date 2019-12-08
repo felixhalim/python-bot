@@ -1,10 +1,11 @@
 import update_reg_user as reg_user
 import update_request_bucket as req_bucket
 from telegram.ext import Updater, CommandHandler
+import os
 
 # Read token from separate file
 with open('telegram-bot-token', 'r') as file:
-    token = file.read().replace('\n', '')
+    TOKEN = file.read().replace('\n', '')
 
 # Local dictionary of registered user
 # Local list of request bucket
@@ -91,7 +92,7 @@ def main():
     Local_req_bucket_matric = req_bucket.getLatestMatric()
     Local_req_bucket_username = req_bucket.getLatestUsername()
 
-    updater = Updater(token, use_context=True) #Put token
+    updater = Updater(TOKEN, use_context=True) #Put token
 
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('register', register))
@@ -100,7 +101,14 @@ def main():
     dp.add_handler(CommandHandler('sync',sync))
     dp.add_handler(CommandHandler('profile',profile))
 
-    updater.start_polling()
+    NAME = "project-goodall" # Heroku app name
+    PORT = os.environ.get('PORT') # Port is given by Heroku
+
+    # Start the webhook
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook("https://{}.herokuapp.com/{}".format(NAME, TOKEN))
     updater.idle()
 
 if __name__ == '__main__':
