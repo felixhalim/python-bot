@@ -9,6 +9,8 @@ with open('telegram-bot-token', 'r') as file:
 
 NAME = "project-goodall" # Heroku app name
 PORT = int(os.environ.get('PORT', '8443')) # Port is given by Heroku
+bot = telegram.Bot(token = TOKEN)
+bot.setWebhook("https://{}.herokuapp.com/{}".format(NAME, TOKEN))
 
 # Local dictionary of registered user
 # Local list of request bucket
