@@ -7,6 +7,9 @@ import os
 with open('telegram-bot-token', 'r') as file:
     TOKEN = file.read().replace('\n', '')
 
+NAME = "project-goodall" # Heroku app name
+PORT = int(os.environ.get('PORT', '8443')) # Port is given by Heroku
+
 # Local dictionary of registered user
 # Local list of request bucket
 Local_reg_user = {}
@@ -101,12 +104,9 @@ def main():
     dp.add_handler(CommandHandler('sync',sync))
     dp.add_handler(CommandHandler('profile',profile))
 
-    NAME = "project-goodall" # Heroku app name
-    PORT = os.environ.get('PORT') # Port is given by Heroku
-
     # Start the webhook
     updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
+                          port=PORT,
                           url_path=TOKEN)
     updater.bot.setWebhook("https://{}.herokuapp.com/{}".format(NAME, TOKEN))
     updater.idle()
