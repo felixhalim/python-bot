@@ -1,10 +1,11 @@
 # virtualenv
 ENV/
+env/
+project-goodall/
 
 #token
 telegram-bot-token
 spreadsheet-token.json
 
 #cache
-__pycache__/update_reg_user.cpython-38.pyc
-__pycache__/update_request_bucket.cpython-38.pyc
+__pycache__/
