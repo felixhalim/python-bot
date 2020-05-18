@@ -1,12 +1,13 @@
-# Project Goodall - Minimize Food Wastage with Telegram Chat Bot
+# Project Goodall
+## Minimize Food Wastage with Telegram Chat Bot
 
 This project developed a Chat-bot in Telegram as solution to solve food wastage problem in Hall
 
 ## Built With
 
--[python-telegram-bot](https://github.com/python-telegram-bot).
--Google App Script
--Google Sheets
+- [python-telegram-bot](https://github.com/python-telegram-bot)
+- Google App Script
+- Google Sheets
 
 ## Authors
 
